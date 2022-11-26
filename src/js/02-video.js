@@ -10,13 +10,6 @@ const currentTime = evt => {
   localStorage.setItem(LOCALSTORAGE_KEY, evt.seconds);
 };
 
-const setTimePlayback = () => {
-  const currentLocalTime = localStorage.getItem(LOCALSTORAGE_KEY);
-  if (currentLocalTime !== null) {
-    player.setCurrentTime(currentLocalTime);
-  }
-};
+player.setCurrentTime(localStorage.getItem(LOCALSTORAGE_KEY));
 
 player.on('timeupdate', throttle(currentTime, 1000));
-
-player.on('play', setTimePlayback);
